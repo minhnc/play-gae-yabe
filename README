@@ -1,3 +1,9 @@
+YABE - Built with:
+- play 1.2.3
+- gae 1.4
+- siena 2.0.4
+- crudsiena 2.0.2
+
 TODO:
 1. Captcha
 2. Publish GAESecurity as a Play Module
