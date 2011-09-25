@@ -1,0 +1,7 @@
+# Application dependencies
+
+require:
+    - play
+    - play -> siena 2.0.4
+    - play -> gae 1.4
+    - play -> crudsiena 2.0.2
