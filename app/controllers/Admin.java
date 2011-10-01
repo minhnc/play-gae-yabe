@@ -64,7 +64,7 @@ public class Admin extends Controller {
         // Set tags list
         for(String t : tags.split(",")) {
             if(t.trim().length() > 0) {
-                post.tagItWith(t);
+                post.tagItWith(t.trim());
             }
         }
         
