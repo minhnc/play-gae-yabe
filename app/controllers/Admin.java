@@ -6,6 +6,8 @@ import play.cache.Cache;
 import play.data.validation.*;
  
 import java.util.*;
+
+import com.google.gson.Gson;
  
 import models.*;
  
@@ -33,7 +35,10 @@ public class Admin extends Controller {
     public static void form(Long id) {
         if(id != null) {
             Post post = Post.findById(id);
-            render(post);
+            notFoundIfNull(post, "Hmm... Not Found.");
+
+            String phrases = new Gson().toJson(post.phrases);
+            render(post, phrases);
         }
         render();
     }
@@ -50,6 +55,10 @@ public class Admin extends Controller {
             post.title = title;
             post.content = content;
         }
+        
+        // Phrase
+        post.phrases.put( "governing body", new Phrase("governing body", "Cơ quan chủ quản") );
+        post.phrases.put( "concession", new Phrase("concession", "Nhường quyền") );
         
         // Validate
         validation.valid(post);

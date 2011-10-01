@@ -19,6 +19,8 @@ import siena.Max;
 import siena.Model;
 import siena.NotNull;
 import siena.Query;
+import siena.embed.Embedded;
+import siena.embed.EmbeddedMap;
 
 public class Post extends Model {
  
@@ -45,6 +47,9 @@ public class Post extends Model {
     @Filter("post")
     public Query<PostTag> postTags;
     
+    @Embedded
+    public Map<String, Phrase> phrases;
+    
     public static Post findById(Long id) {
     	return Model.getByKey(Post.class, id);
     }
@@ -55,6 +60,7 @@ public class Post extends Model {
         this.title = title;
         this.content = content;
         this.postedAt = new Date();
+        this.phrases = new HashMap<String, Phrase>();
     }
 
     public Post addComment(String author, String content) {

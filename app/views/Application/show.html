@@ -51,7 +51,32 @@
 #{/form}
 
 <script type="text/javascript" charset="${_response_encoding}">
-    $(function() {         
+	var phrases = "${phrases}";
+	var phrasesJson, content = null; 
+	
+	if ( phrases != "" ) {
+		phrasesJson = eval( '(' + phrases.replace(/&quot;/g, "'") + ')' );
+		content = $('#main .post-content').html();
+	}
+		
+
+	function hlContent() {
+		if (phrasesJson == null) 
+			return;
+		
+		$.each(phrasesJson, function() {
+			hlPhrase(this);
+		});
+	}
+	
+	function hlPhrase(phrase) {
+		content = content.replace( phrase.phrase , '<span class="hl" title="'+ phrase.meaning +'">' + phrase.phrase + "</span>");
+		$('#main .post-content').html( content );
+	}
+	
+    $(function() {       
+    	hlContent();
+    	
         // Expose the form 
         $('form').click(function() { 
             $('form').expose({api: true}).load(); 

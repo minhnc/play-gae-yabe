@@ -279,8 +279,8 @@ form p {
 }
 
 form textarea {
-    width: 70%;
-    height: 150px;
+    width: 95%;
+    height: 300px;
 }
 
 form input, form textarea {
@@ -544,4 +544,8 @@ tr.odd {
 
 .hasError {
     background: pink;
+}
+
+.hl {
+	background: yellow;
 }

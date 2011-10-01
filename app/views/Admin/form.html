@@ -26,8 +26,7 @@
     <p>
         #{field 'content'}
         <label>Write here:</label>
-        <textarea name="${field.name}" 
-            class="${field.errorClass}">${post?.content}</textarea>
+        <textarea id="content" name="${field.name}" class="${field.errorClass}">${post?.content}</textarea>
         #{/field}
     </p>
  
@@ -44,3 +43,17 @@
     </p>
     
 #{/form}
+
+<script type="text/javascript" charset="${_response_encoding}">
+	var phrases = "${phrases}";
+	var phrasesJson = null; 
+	
+	if ( phrases != "" )
+		phrasesJson = eval( '(' + phrases.replace(/&quot;/g, "'") + ')' );
+
+    $(function() {         
+        $('#content').select( function() {
+        	
+        } );
+    });
+</script>
