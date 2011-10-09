@@ -35,7 +35,7 @@ public class Post extends Model {
     
     @Lob
     @Required
-    @Max(10000)
+    @Max(50000)
     public String content;
     
     @Required @Index("user_index")
