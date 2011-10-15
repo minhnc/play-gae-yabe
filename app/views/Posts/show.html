@@ -31,11 +31,5 @@ function delMapElement(postId, fieldName, mkey, container) {
 
 function addMapElement(postId, fieldName, mkey, container) {
 	window.location = '/admin/add_phrase/' + postId + '/' + mkey;
-	
-	$.ajax({
-		url: '/admin/add_phrase',
-		async: false,
-		data: {id: postId, phrase: mkey}
-	});
 }
 </script>
