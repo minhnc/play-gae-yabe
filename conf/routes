@@ -20,6 +20,7 @@ GET     /admin/myPosts/{id}                     Admin.form
 POST    /admin/myPosts/{id}                     Admin.save
 GET     /admin/new                              Admin.form
 POST    /admin/new                              Admin.save
+GET		/admin/add_phrase/{id}/{phrase}			Admin.addPhrase
 *       /admin                                  module:crudsiena
 
 # Ignore favicon requests

@@ -30,8 +30,9 @@ public class Application extends Controller {
         renderArgs.put("blogTitle", Play.configuration.getProperty("blog.title"));
         renderArgs.put("blogBaseline", Play.configuration.getProperty("blog.baseline"));
         
+        // TODO: Remove this before go to GAE
         // This function will be called one time on DEV mode
-        generateCaptcha(10, 180, 50, "#E4EAFD", 6);
+        //generateCaptcha(10, 180, 50, "#E4EAFD", 6);
     }
  
 	public static void index() {
@@ -46,7 +47,11 @@ public class Application extends Controller {
         notFoundIfNull(post, "Hmm... Not Found.");
         
         String randomID = Codec.UUID();
-        String phrases = new Gson().toJson(post.phrases.values());
+        String phrases = "";
+        if ( post.phrases != null ) {
+        	phrases = new Gson().toJson(post.phrases.values());
+        }
+        
         render(post, randomID, phrases);
     }
     

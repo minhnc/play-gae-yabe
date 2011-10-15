@@ -475,6 +475,10 @@ tr.odd {
     -webkit-box-shadow: none;
 }
 
+.crudField label.mapKey {
+	width: 25%;
+}
+
 /** Login **/
 
 #login form {

@@ -37,8 +37,7 @@ public class Admin extends Controller {
             Post post = Post.findById(id);
             notFoundIfNull(post, "Hmm... Not Found.");
 
-            String phrases = new Gson().toJson(post.phrases);
-            render(post, phrases);
+            render(post);
         }
         render();
     }
@@ -55,10 +54,6 @@ public class Admin extends Controller {
             post.title = title;
             post.content = content;
         }
-        
-        // Phrase
-        post.phrases.put( "governing body", new Phrase("governing body", "Cơ quan chủ quản") );
-        post.phrases.put( "concession", new Phrase("concession", "Nhường quyền") );
         
         // Validate
         validation.valid(post);
@@ -78,6 +73,18 @@ public class Admin extends Controller {
         }
         
         index();
+    }
+    
+    public static void addPhrase(Long id, String phrase) {
+    	if (id != null) {
+    		Post post = Post.findById(id);
+    		notFoundIfNull(post, "Hmm... Not Found.");
+    		
+    		post.phrases.put(phrase.replaceAll(" ", "_"), new Phrase(phrase, phrase));
+    		post.save();
+    	}
+    	
+    	redirect("/admin/posts/" + id);
     }
     
 }

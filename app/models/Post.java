@@ -6,12 +6,11 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.google.appengine.repackaged.org.joda.time.DateTime;
-
 import play.data.binding.As;
 import play.data.validation.MaxSize;
 import play.data.validation.Required;
 
+import siena.DateTime;
 import siena.Filter;
 import siena.Id;
 import siena.Index;
@@ -30,7 +29,9 @@ public class Post extends Model {
 	@Required
     public String title;
     
-    @Required @siena.DateTime
+    @Required 
+    @DateTime
+    @As(lang={"*"}, value={"yyyy-MM-dd hh:mm:ss"})
     public Date postedAt;
     
     @Lob
